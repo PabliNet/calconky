@@ -24,27 +24,27 @@ Ejecutamos como _root_ o con privilegios de superusuario (anteponiemdo _sudo_):
 También se puede usar _--install_.
 
 #### Instalación local
-Para la instalación local hay que darle permisos de ejecución:   
+Para la instalación local le damos permisos de ejecución:   
 `$ chmod +x shpkg`
 
 Y lo ejecutamos:   
 `$ ./shpkg -i`
 
 ### Modo de uso:
-Si lo instalaste en modo local, en vez de escribir `${exec calconky}`, necesitarás escribir:   
-`${exec python cal.py}`
-
 Para visualizar los nombres de los día (Lu, Ma, Mi, Ju, Vi, Sa Do), tecleamos:   
 `${exec calconky 0}`
 
 Si queremos una sangría de 5 espacios:   
 `${exec calconky 5 0}`   
-`${exec calconky 5 1}`
+`${exec calconky 5}`
 
 También se puede agregar el nombre del mes y el año:   
 `$alignc${exec calconky -my}`   
 `${exec calconky 5 0}`   
-`${exec calconky 5 1}`
+`${exec calconky 5}`
+
+**ATENCIÓN:** En caso de haber instalado el script en modo local, necesitarás escribir:   
+`${exec python cal.py}`
 
 Para más información:   
 `$ calconky -h`
