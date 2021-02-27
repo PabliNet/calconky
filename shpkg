@@ -1,0 +1,20 @@
+#!/bin/bash
+install=pyquete.py
+paquete=calconky.py
+if [[ $# -ne 1 || ! -f $install || ! -f $paquete ]] 
+	then
+	echo ERROR: Mal escrito el comando.
+	exit 1
+fi
+
+case $1 in
+	'-i'|'--install')
+ 	mkdir -p ~/.local/bin
+	cp $install ~/.local/bin
+	sed "7i\path.append(getenv('HOME') + '/.local/bin')" $paquete > cal.py
+	echo Ya puede ejecutar: «python cal.py»
+;;
+	'-r'|'--remove') 
+	rm ~/.local/bin/pyquete.py
+;;
+esac
