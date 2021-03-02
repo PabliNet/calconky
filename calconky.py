@@ -17,6 +17,23 @@ def error(opcion):
 	print (f'ERROR: {l[opcion-1]}.')
 	return opcion
 
+def eshoy (dia, hoy=(date.today().strftime('%Y-%m-%d')).split('-')[2]):
+	if dia == int(hoy):
+		return '[', ']'
+	else:
+		return '\u0020', '\u0020'
+
+def strDia (dia, hoy=date.today().strftime('%d')):
+	if dia == 0:
+		return '\u0020' * 4
+	elif dia < 10:
+		if dia == int(hoy):
+			return eshoy(dia)[0] + '0' + str(dia) + eshoy(dia)[1]
+		else:
+			return eshoy(dia)[0] + '\u0020' + str(dia) + eshoy(dia)[1]
+	else:
+		return eshoy(dia)[0] + str(dia) + eshoy(dia)[1]
+
 if len(argv) == 1:
 	argv.extend(['0', '1'])
 
@@ -49,7 +66,7 @@ if len(argv) == 2 and not argv[1].isdigit():
 		opciones(argv[0], True)
 		print('\nSugerencia:', '    Si desea sin sangría, teclee:', f'\t{argv[0]} 0', f'\t{argv[0]}', sep='\n')
 	elif argv[1] in ('-v', '--version'):
-		print (f'{argv[0]} 1.0','Copyright © 2021\n', 'Desarrollado por Pablo Alejandro Carravetti', sep='\n')
+		print (f'{argv[0]} 1.0.1','Copyright © 2021\n', 'Desarrollado por Pablo Alejandro Carravetti', sep='\n')
 	else:
 		exit(error(1))
 	exit()
@@ -63,20 +80,6 @@ elif len(argv) > 3:
 	exit(error(2))
 
 argv[2] = bool(int(argv[2]))
-
-def eshoy (dia, hoy=(date.today().strftime('%Y-%m-%d')).split('-')[2]):
-	if dia == int(hoy):
-		return '[', ']'
-	else:
-		return '\u0020', '\u0020'
-
-def strDia (dia):
-	if dia == 0:
-		return '\u0020' * 4
-	elif dia < 10:
-		return eshoy(dia)[0] + '\u0020' + str(dia) + eshoy(dia)[1]
-	else:
-		return eshoy(dia)[0] + str(dia) + eshoy(dia)[1]
 
 dato = tuple((date.today().strftime('%Y-%m')).split('-'))
 
