@@ -25,12 +25,9 @@ def eshoy (dia, hoy=(date.today().strftime('%Y-%m-%d')).split('-')[2]):
 
 def strDia (dia, hoy=date.today().strftime('%d')):
 	if dia == 0:
-		return '\u0020' * 4
+		return '\u0020' + '\u00B7' * 2 + '\u0020'
 	elif dia < 10:
-		if dia == int(hoy):
-			return eshoy(dia)[0] + '0' + str(dia) + eshoy(dia)[1]
-		else:
-			return eshoy(dia)[0] + '\u0020' + str(dia) + eshoy(dia)[1]
+		return eshoy(dia)[0] + '\u00B7' + str(dia) + eshoy(dia)[1]
 	else:
 		return eshoy(dia)[0] + str(dia) + eshoy(dia)[1]
 
@@ -66,7 +63,7 @@ if len(argv) == 2 and not argv[1].isdigit():
 		opciones(argv[0], True)
 		print('\nSugerencia:', '    Si desea sin sangría, teclee:', f'\t{argv[0]} 0', f'\t{argv[0]}', sep='\n')
 	elif argv[1] in ('-v', '--version'):
-		print (f'{argv[0]} 1.0.1','Copyright © 2021\n', 'Desarrollado por Pablo Alejandro Carravetti', sep='\n')
+		print (f'{argv[0]} 1.0.2','Copyright © 2021\n', 'Desarrollado por Pablo Alejandro Carravetti', sep='\n')
 	else:
 		exit(error(1))
 	exit()
