@@ -17,17 +17,19 @@ def error(opcion):
 	print (f'ERROR: {l[opcion-1]}.')
 	return opcion
 
-def eshoy (dia, hoy=(date.today().strftime('%Y-%m-%d')).split('-')[2]):
-	if dia == int(hoy):
-		return '[', ']'
+def eshoy (dia, hoy=(date.today().strftime('%d'))):
+	if dia == int(hoy) and dia > 9:
+		return '\u2713', '\u0020'
 	else:
 		return '\u0020', '\u0020'
 
 def strDia (dia, hoy=date.today().strftime('%d')):
 	if dia == 0:
-		return '\u0020' + '\u00B7' * 2 + '\u0020'
+		return 4 * '\u0020'
+	elif dia < 10 and dia == int(hoy):
+		return eshoy(dia)[0] + '\u2713' + str(dia) + eshoy(dia)[1]
 	elif dia < 10:
-		return eshoy(dia)[0] + '\u00B7' + str(dia) + eshoy(dia)[1]
+		return eshoy(dia)[0] + '\u0020' + str(dia) + eshoy(dia)[1]
 	else:
 		return eshoy(dia)[0] + str(dia) + eshoy(dia)[1]
 
